@@ -1153,11 +1153,6 @@
 
   /* ---- REVEAL ---- */
   .reveal {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.75s ease, transform 0.75s ease;
-  }
-  .reveal.visible {
     opacity: 1;
     transform: translateY(0);
   }
@@ -1722,4 +1717,6 @@ function drawCube(t) {
 
   const proj = ([x, y, z]) => {
     const y2 = y * cosx - z * sinx, z2 = y * sinx + z * cosx;
- 
+    const x2 = x * cosy + z2 * siny, z3 = -x * siny + z2 * cosy;
+    const s = 4.5 / (4.5 + z3);
+    return [cx + x2 * size * s, cy 
