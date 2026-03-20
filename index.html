@@ -1207,29 +1207,46 @@
     .card-3d-wrap { display: none; }
     .cp-card { grid-template-columns: 1fr; gap: 32px; }
     .edu-row { grid-template-columns: 1fr; }
-    .aiu-inner { grid-template-columns: 1fr; }
-    .aiu-left {
-      border-right: none;
-      border-bottom: 1px solid var(--border);
-      padding: 24px;
-    }
-    .aiu-right { padding: 24px; }
     .nav-links { display: none; }
     nav { padding: 16px 24px; }
     .wrapper { padding: 0 16px; }
-    .icpc-stats { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* موبايل: AIU card يتحول لعمود واحد */
+  @media (max-width: 768px) {
+    .aiu-inner {
+      grid-template-columns: 1fr !important;
+      width: 100%;
+    }
+    .aiu-left {
+      border-right: none !important;
+      border-bottom: 1px solid var(--border);
+      padding: 20px !important;
+      width: 100%;
+      overflow: hidden;
+    }
+    .aiu-right {
+      padding: 20px !important;
+      width: 100%;
+      overflow: hidden;
+    }
+    .aiu-title { font-size: 20px !important; }
+    .icpc-title { font-size: 18px !important; }
     .aiu-meta-item { padding: 10px 12px; }
-    .aiu-meta-val { font-size: 12px; }
+    .aiu-meta-val { font-size: 13px; }
     .icpc-pills { gap: 6px; }
     .icpc-pill { font-size: 8px; padding: 4px 8px; }
+    .icpc-stats { grid-template-columns: repeat(3, 1fr); }
+    .icpc-block { padding: 20px; }
   }
 
   @media (max-width: 480px) {
-    .aiu-title { font-size: 16px; }
-    .icpc-title { font-size: 15px; }
-    .aiu-left, .aiu-right { padding: 20px; }
+    .aiu-left, .aiu-right { padding: 16px !important; }
+    .aiu-title { font-size: 17px !important; }
+    .icpc-title { font-size: 16px !important; }
     .icpc-stats { grid-template-columns: 1fr 1fr; gap: 8px; }
-    .icpc-stat-num { font-size: 16px; }
+    .icpc-stat-num { font-size: 15px; }
+    .aiu-desc, .icpc-desc { font-size: 12px; }
   }
 </style>
 </head>
@@ -1707,22 +1724,4 @@ function draw() {
     ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
   }
   for (let y = 0; y < H + gs; y += gs) {
-    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
-  }
-
-  // Particles
-  particles.forEach(p => {
-    p.x += p.vx; p.y += p.vy;
-    if (p.x < 0) p.x = W;
-    if (p.x > W) p.x = 0;
-    if (p.y < 0) p.y = H;
-    if (p.y > H) p.y = 0;
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(0,200,240,${p.alpha})`;
-    ctx.fill();
-  });
-
-  // Connections
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i + 1; j < particles.length; j++) {
+    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(
