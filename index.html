@@ -28,11 +28,17 @@
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--bg);
+    background: #030810;
     color: var(--text);
     font-family: 'Outfit', sans-serif;
     overflow-x: hidden;
     cursor: none;
+  }
+
+  /* موبايل: cursor طبيعي */
+  @media (hover: none) {
+    body { cursor: auto; }
+    #cursor, #cursor-ring { display: none; }
   }
 
   /* ---- CURSOR ---- */
@@ -63,7 +69,7 @@
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    z-index: 0;
+    z-index: -1;
     opacity: 0.5;
   }
 
@@ -75,7 +81,7 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
     background-size: 180px;
     pointer-events: none;
-    z-index: 0;
+    z-index: -1;
     opacity: 0.6;
   }
 
@@ -1717,6 +1723,4 @@ function drawCube(t) {
 
   const proj = ([x, y, z]) => {
     const y2 = y * cosx - z * sinx, z2 = y * sinx + z * cosx;
-    const x2 = x * cosy + z2 * siny, z3 = -x * siny + z2 * cosy;
-    const s = 4.5 / (4.5 + z3);
-    return [cx + x2 * size * s, cy 
+ 
