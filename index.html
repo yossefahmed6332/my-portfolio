@@ -73,6 +73,11 @@
     opacity: 0.5;
   }
 
+  /* موبايل: شيل الـ canvas خالص */
+  @media (max-width: 768px) {
+    #bg-canvas { display: none; }
+  }
+
   /* ---- NOISE OVERLAY ---- */
   body::after {
     content: '';
@@ -1697,7 +1702,9 @@ window.addEventListener('resize', () => { resize(); initParticles(); });
 
 function initParticles() {
   particles = [];
-  const count = Math.min(100, Math.floor(W * H / 14000));
+  const isMob = window.innerWidth <= 768;
+  if (isMob) return; // موبايل: مش محتاج particles خالص
+  const count = Math.min(80, Math.floor(W * H / 16000));
   for (let i = 0; i < count; i++) {
     particles.push({
       x: Math.random() * W,
@@ -1712,16 +1719,10 @@ function initParticles() {
 initParticles();
 
 let frame = 0;
+const isMobile = window.innerWidth <= 768;
 
 function draw() {
   ctx.clearRect(0, 0, W, H);
 
   // Grid
   ctx.strokeStyle = 'rgba(0,200,240,0.022)';
-  ctx.lineWidth = 1;
-  const gs = 88;
-  for (let x = 0; x < W + gs; x += gs) {
-    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
-  }
-  for (let y = 0; y < H + gs; y += gs) {
-    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(
