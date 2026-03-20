@@ -733,6 +733,8 @@
     overflow: hidden;
     position: relative;
     box-shadow: var(--glow2);
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .aiu-card::before {
@@ -747,16 +749,22 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0;
+    width: 100%;
+    overflow: hidden;
   }
 
   .aiu-left {
-    padding: 48px;
+    padding: 36px;
     border-right: 1px solid var(--border);
+    min-width: 0;
+    overflow: hidden;
   }
 
   .aiu-right {
-    padding: 48px;
+    padding: 36px;
     background: rgba(0,0,0,0.15);
+    min-width: 0;
+    overflow: hidden;
   }
 
   .aiu-tag {
@@ -780,10 +788,11 @@
 
   .aiu-title {
     font-family: 'Syne', sans-serif;
-    font-size: 28px;
+    font-size: clamp(18px, 2.5vw, 26px);
     font-weight: 800;
     margin-bottom: 8px;
-    line-height: 1.15;
+    line-height: 1.2;
+    word-break: break-word;
   }
 
   .aiu-subtitle {
@@ -796,10 +805,12 @@
   }
 
   .aiu-desc {
-    font-size: 14px;
-    line-height: 1.85;
+    font-size: 13px;
+    line-height: 1.8;
     color: #7a9db5;
     font-weight: 300;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   .aiu-meta {
@@ -839,9 +850,10 @@
   }
   .aiu-meta-val {
     font-family: 'Syne', sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     color: var(--text);
+    word-break: break-word;
   }
 
   /* ICPC Block */
@@ -879,20 +891,23 @@
 
   .icpc-title {
     font-family: 'Syne', sans-serif;
-    font-size: 22px;
+    font-size: clamp(16px, 2vw, 22px);
     font-weight: 800;
     margin-bottom: 8px;
     color: var(--text);
+    word-break: break-word;
   }
 
   .icpc-title span { color: var(--accent4); }
 
   .icpc-desc {
-    font-size: 13px;
-    line-height: 1.8;
+    font-size: 12px;
+    line-height: 1.75;
     color: #7a9db5;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
     font-weight: 300;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   .icpc-pills {
@@ -1193,10 +1208,28 @@
     .cp-card { grid-template-columns: 1fr; gap: 32px; }
     .edu-row { grid-template-columns: 1fr; }
     .aiu-inner { grid-template-columns: 1fr; }
-    .aiu-left { border-right: none; border-bottom: 1px solid var(--border); }
+    .aiu-left {
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      padding: 24px;
+    }
+    .aiu-right { padding: 24px; }
     .nav-links { display: none; }
     nav { padding: 16px 24px; }
-    .wrapper { padding: 0 20px; }
+    .wrapper { padding: 0 16px; }
+    .icpc-stats { grid-template-columns: repeat(3, 1fr); }
+    .aiu-meta-item { padding: 10px 12px; }
+    .aiu-meta-val { font-size: 12px; }
+    .icpc-pills { gap: 6px; }
+    .icpc-pill { font-size: 8px; padding: 4px 8px; }
+  }
+
+  @media (max-width: 480px) {
+    .aiu-title { font-size: 16px; }
+    .icpc-title { font-size: 15px; }
+    .aiu-left, .aiu-right { padding: 20px; }
+    .icpc-stats { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .icpc-stat-num { font-size: 16px; }
   }
 </style>
 </head>
@@ -1693,34 +1726,3 @@ function draw() {
   // Connections
   for (let i = 0; i < particles.length; i++) {
     for (let j = i + 1; j < particles.length; j++) {
-      const dx = particles[i].x - particles[j].x;
-      const dy = particles[i].y - particles[j].y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist < 115) {
-        ctx.beginPath();
-        ctx.moveTo(particles[i].x, particles[i].y);
-        ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.strokeStyle = `rgba(0,200,240,${0.055 * (1 - dist/115)})`;
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
-      }
-    }
-  }
-
-  // Rotating wireframe cube (top-right corner)
-  drawCube(frame);
-  frame += 0.007;
-  requestAnimationFrame(draw);
-}
-draw();
-
-function drawCube(t) {
-  const cx = W - 110, cy = 180, size = 50;
-  const rx = t * 0.65, ry = t;
-  const pts = [[-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,-1],[-1,-1,1],[1,-1,1],[1,1,1],[-1,1,1]];
-  const cosx = Math.cos(rx), sinx = Math.sin(rx);
-  const cosy = Math.cos(ry), siny = Math.sin(ry);
-
-  const proj = ([x, y, z]) => {
-    const y2 = y * cosx - z * sinx, z2 = y * sinx + z * cosx;
- 
