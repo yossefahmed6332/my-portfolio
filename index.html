@@ -778,6 +778,83 @@
 
   .uni-major strong { color: var(--accent2); }
 
+  /* ---- ROADMAP SECTION ---- */
+  .roadmap-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .roadmap-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 28px;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .roadmap-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, var(--accent2), #7b2fff);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+
+  .roadmap-card:hover::before { transform: scaleX(1); }
+
+  .roadmap-card:hover {
+    border-color: rgba(0,212,255,0.3);
+    transform: translateY(-4px);
+    box-shadow: var(--glow);
+  }
+
+  .roadmap-icon { font-size: 28px; margin-bottom: 14px; display: block; }
+
+  .roadmap-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 8px;
+  }
+
+  .roadmap-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .roadmap-desc {
+    font-size: 12px;
+    color: #7a9db8;
+    line-height: 1.8;
+    margin-bottom: 14px;
+  }
+
+  .roadmap-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag-orange {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    border: 1px solid rgba(255,107,53,0.25);
+    padding: 4px 10px;
+    border-radius: 2px;
+    background: rgba(255,107,53,0.05);
+  }
+
   /* ---- FOOTER ---- */
   footer {
     border-top: 1px solid var(--border);
@@ -926,6 +1003,7 @@
     .identity-grid { grid-template-columns: 1fr; }
     .uni-inner { grid-template-columns: 1fr; }
     .nav-links { display: none; }
+    .roadmap-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -944,6 +1022,7 @@
     <li><a href="#stack">Stack</a></li>
     <li><a href="#cp">CF</a></li>
     <li><a href="#edu">Certs</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
   </ul>
 </nav>
 
@@ -962,15 +1041,16 @@
           Yossef
           <span>Ahmed</span>
         </h1>
-        <p class="hero-role">Java · Spring Boot · SQL · AI Enthusiast · ICPC</p>
+        <p class="hero-role">Python · Django · SQL · Docker · AI Enthusiast · ICPC</p>
         <p class="hero-desc">
-          CS student at <strong>AIU</strong> building robust backend systems with <strong>Java OOP</strong> and <strong>Spring Boot</strong>.
-          Designing clean, scalable architectures. Passionate about <strong>AI & intelligent systems</strong>.
+          CS student at <strong>AIU</strong> building robust backend systems with <strong>Python</strong> and <strong>Django</strong>.
+          Designing clean, scalable architectures with <strong>Docker</strong> and <strong>Microservices</strong>.
+          Passionate about <strong>AI & intelligent systems</strong>.
           Active in the <strong>AIU ICPC community</strong> — always shipping, always learning.
         </p>
         <div class="cta-row">
           <a href="https://codeforces.com/profile/yossef2260" target="_blank" class="btn solid">↗ Codeforces</a>
-       <a href="https://github.com/yossefahmed6332" target="_blank" class="btn">⌥ GitHub</a>
+          <a href="https://github.com/yossefahmed6332" target="_blank" class="btn">⌥ GitHub</a>
         </div>
       </div>
 
@@ -1015,12 +1095,13 @@
         <span class="t-line t-out">&nbsp;&nbsp;<span style="color:#5ab4d4">"university"</span>: <span class="t-str">"AIU — Alalamin International University"</span>,</span>
         <span class="t-line t-out">&nbsp;&nbsp;<span style="color:#5ab4d4">"major"</span>: <span class="t-str">"Computer Science"</span>,</span>
         <span class="t-line t-out">&nbsp;&nbsp;<span style="color:#5ab4d4">"role"</span>: <span class="t-str">"Junior Backend Developer"</span>,</span>
-        <span class="t-line t-out">&nbsp;&nbsp;<span style="color:#5ab4d4">"stack"</span>: [<span class="t-str">"Java"</span>, <span class="t-str">"Spring Boot"</span>, <span class="t-str">"MySQL"</span>],</span>
-        <span class="t-line t-out">&nbsp;&nbsp;<span style="color:#5ab4d4">"interests"</span>: [<span class="t-str">"AI"</span>, <span class="t-str">"System Design"</span>, <span class="t-str">"Clean Architecture"</span>],</span>
+        <span class="t-line t-out">&nbsp;&nbsp;<span style="color:#5ab4d4">"stack"</span>: [<span class="t-str">"Python"</span>, <span class="t-str">"Django"</span>, <span class="t-str">"MySQL"</span>, <span class="t-str">"Docker"</span>],</span>
+        <span class="t-line t-out">&nbsp;&nbsp;<span style="color:#5ab4d4">"architecture"</span>: [<span class="t-str">"Microservices"</span>, <span class="t-str">"REST APIs"</span>, <span class="t-str">"Clean Architecture"</span>],</span>
+        <span class="t-line t-out">&nbsp;&nbsp;<span style="color:#5ab4d4">"interests"</span>: [<span class="t-str">"AI"</span>, <span class="t-str">"System Design"</span>, <span class="t-str">"DevOps"</span>],</span>
         <span class="t-line t-out">&nbsp;&nbsp;<span style="color:#5ab4d4">"community"</span>: <span class="t-str">"AIU ICPC"</span>,</span>
         <span class="t-line t-out">&nbsp;&nbsp;<span style="color:#5ab4d4">"competitive_programming"</span>: <span class="t-val">true</span>,</span>
         <span class="t-line t-out">&nbsp;&nbsp;<span style="color:#5ab4d4">"platform"</span>: <span class="t-str">"Codeforces @yossef2260"</span>,</span>
-        <span class="t-line t-out">&nbsp;&nbsp;<span style="color:#5ab4d4">"builds"</span>: <span class="t-str">"clean, scalable systems"</span>,</span>
+        <span class="t-line t-out">&nbsp;&nbsp;<span style="color:#5ab4d4">"builds"</span>: <span class="t-str">"clean, scalable, containerized systems"</span>,</span>
         <span class="t-line t-out">&nbsp;&nbsp;<span style="color:#5ab4d4">"status"</span>: <span class="t-val">true</span> <span class="t-cmt">// open to work</span></span>
         <span class="t-line t-out">}</span>
         <span class="t-line" style="margin-top:8px"><span class="t-prompt">❯ </span><span class="cursor-blink"></span></span>
@@ -1058,7 +1139,7 @@
         <div class="id-title">AI & Intelligent Systems</div>
         <div class="id-desc">
           Deeply interested in <strong>Artificial Intelligence</strong> and how it powers modern systems.
-          Exploring how AI can be integrated into backends to build smarter, more adaptive software.
+          Exploring how AI can be integrated into Python backends to build smarter, more adaptive software.
         </div>
         <div class="ai-interest-bar">
           <div class="ai-bar-item">
@@ -1092,17 +1173,17 @@
 
       <!-- Clean Systems -->
       <div class="identity-card reveal" style="transition-delay:0.2s">
-        <span class="id-icon">🏗️</span>
+        <span class="id-icon">🐍</span>
         <div class="id-label">Engineering Philosophy</div>
-        <div class="id-title">Clean Systems Builder</div>
+        <div class="id-title">Pythonic Systems Builder</div>
         <div class="id-desc">
-          Builds backend systems with clarity and purpose — clean architecture, well-structured code, and maintainable design at the core.
+          Builds backend systems with Django and Python — clean architecture, well-structured APIs, and containerized deployments with Docker.
         </div>
         <div class="principles-list">
-          <div class="principle-item">Clean, readable code over clever hacks</div>
-          <div class="principle-item">Separation of concerns & layered architecture</div>
+          <div class="principle-item">Clean, Pythonic code over verbose hacks</div>
+          <div class="principle-item">Microservices for scalability & isolation</div>
+          <div class="principle-item">Docker containers for consistent deployments</div>
           <div class="principle-item">Design before implementation</div>
-          <div class="principle-item">Every system should be easy to extend</div>
         </div>
       </div>
 
@@ -1113,13 +1194,13 @@
         <div class="id-title">Developer at a Glance</div>
         <div class="id-desc">
           Junior backend developer, CS student, and competitive programmer —
-          building systems during the day and solving algorithm problems at night.
+          building containerized systems during the day and solving algorithm problems at night.
         </div>
         <div class="principles-list">
           <div class="principle-item">🎓 CS @ AIU, Alexandria</div>
-          <div class="principle-item">☕ Java + Spring Boot backend stack</div>
+          <div class="principle-item">🐍 Python + Django backend stack</div>
+          <div class="principle-item">🐳 Docker + Microservices</div>
           <div class="principle-item">🤖 AI & systems enthusiast</div>
-          <div class="principle-item">🏆 AIU ICPC community member</div>
           <div class="principle-item">⚡ Codeforces: @yossef2260</div>
         </div>
       </div>
@@ -1136,30 +1217,30 @@
       <div class="section-line"></div>
     </div>
     <div class="skills-grid">
-      <div class="skill-block reveal" data-bar="82">
-        <div class="skill-icon">☕</div>
-        <div class="skill-name">Java OOP</div>
-        <div class="skill-sub">IntelliJ IDEA · Coursera Certified</div>
+      <div class="skill-block reveal" data-bar="80">
+        <div class="skill-icon">🐍</div>
+        <div class="skill-name">Python OOP</div>
+        <div class="skill-sub">Clean Code · Data Structures · Pythonic Design</div>
         <div class="skill-bar-wrap"><div class="skill-bar"></div></div>
         <div class="skill-pct">Intermediate</div>
         <div class="skill-tags">
           <span class="tag">Classes</span>
-          <span class="tag">Inheritance</span>
-          <span class="tag">Polymorphism</span>
-          <span class="tag">Collections</span>
+          <span class="tag">Decorators</span>
+          <span class="tag">Generators</span>
+          <span class="tag">Async</span>
         </div>
       </div>
       <div class="skill-block reveal" data-bar="72" style="transition-delay:0.1s">
-        <div class="skill-icon">🌱</div>
-        <div class="skill-name">Spring Boot</div>
-        <div class="skill-sub">REST APIs · MVC · JPA</div>
+        <div class="skill-icon">🌐</div>
+        <div class="skill-name">Django</div>
+        <div class="skill-sub">REST APIs · ORM · DRF · Auth</div>
         <div class="skill-bar-wrap"><div class="skill-bar"></div></div>
         <div class="skill-pct">Intermediate</div>
         <div class="skill-tags">
-          <span class="tag">REST</span>
-          <span class="tag">Spring MVC</span>
-          <span class="tag">Spring Data</span>
-          <span class="tag">JPA</span>
+          <span class="tag">DRF</span>
+          <span class="tag">Django ORM</span>
+          <span class="tag">Views</span>
+          <span class="tag">Middleware</span>
         </div>
       </div>
       <div class="skill-block reveal" data-bar="78" style="transition-delay:0.2s">
@@ -1175,7 +1256,20 @@
           <span class="tag">Schema Design</span>
         </div>
       </div>
-      <div class="skill-block reveal" data-bar="60" style="transition-delay:0.3s">
+      <div class="skill-block reveal" data-bar="58" style="transition-delay:0.3s">
+        <div class="skill-icon">🐳</div>
+        <div class="skill-name">Docker & Microservices</div>
+        <div class="skill-sub">Containers · Service Architecture · DevOps</div>
+        <div class="skill-bar-wrap"><div class="skill-bar"></div></div>
+        <div class="skill-pct">Learning</div>
+        <div class="skill-tags">
+          <span class="tag">Docker</span>
+          <span class="tag">Compose</span>
+          <span class="tag">Microservices</span>
+          <span class="tag">APIs</span>
+        </div>
+      </div>
+      <div class="skill-block reveal" data-bar="60" style="transition-delay:0.4s">
         <div class="skill-icon">⚡</div>
         <div class="skill-name">Algorithms & DS</div>
         <div class="skill-sub">Codeforces · AIU ICPC Community</div>
@@ -1201,16 +1295,18 @@
       <div class="section-line"></div>
     </div>
     <div class="stack-grid">
-      <div class="stack-item reveal"><span class="stack-logo">☕</span><span class="stack-name">Java</span></div>
-      <div class="stack-item reveal" style="transition-delay:0.05s"><span class="stack-logo">🌱</span><span class="stack-name">Spring Boot</span></div>
+      <div class="stack-item reveal"><span class="stack-logo">🐍</span><span class="stack-name">Python</span></div>
+      <div class="stack-item reveal" style="transition-delay:0.05s"><span class="stack-logo">🌐</span><span class="stack-name">Django</span></div>
       <div class="stack-item reveal" style="transition-delay:0.1s"><span class="stack-logo">🐬</span><span class="stack-name">MySQL</span></div>
-      <div class="stack-item reveal" style="transition-delay:0.15s"><span class="stack-logo">🛡️</span><span class="stack-name">Spring Security</span></div>
+      <div class="stack-item reveal" style="transition-delay:0.15s"><span class="stack-logo">🐳</span><span class="stack-name">Docker</span></div>
       <div class="stack-item reveal" style="transition-delay:0.2s"><span class="stack-logo">🔗</span><span class="stack-name">REST APIs</span></div>
-      <div class="stack-item reveal" style="transition-delay:0.25s"><span class="stack-logo">🧠</span><span class="stack-name">IntelliJ IDEA</span></div>
+      <div class="stack-item reveal" style="transition-delay:0.25s"><span class="stack-logo">🧩</span><span class="stack-name">Microservices</span></div>
       <div class="stack-item reveal" style="transition-delay:0.3s"><span class="stack-logo">🗂️</span><span class="stack-name">Git / GitHub</span></div>
-      <div class="stack-item reveal" style="transition-delay:0.35s"><span class="stack-logo">🐘</span><span class="stack-name">Hibernate / JPA</span></div>
-      <div class="stack-item reveal" style="transition-delay:0.4s"><span class="stack-logo">📦</span><span class="stack-name">Maven</span></div>
+      <div class="stack-item reveal" style="transition-delay:0.35s"><span class="stack-logo">🛡️</span><span class="stack-name">Django Auth</span></div>
+      <div class="stack-item reveal" style="transition-delay:0.4s"><span class="stack-logo">📦</span><span class="stack-name">Django ORM</span></div>
       <div class="stack-item reveal" style="transition-delay:0.45s"><span class="stack-logo">🖥️</span><span class="stack-name">MySQL Workbench</span></div>
+      <div class="stack-item reveal" style="transition-delay:0.5s"><span class="stack-logo">⚙️</span><span class="stack-name">Docker Compose</span></div>
+      <div class="stack-item reveal" style="transition-delay:0.55s"><span class="stack-logo">🔧</span><span class="stack-name">DRF</span></div>
     </div>
   </section>
 
@@ -1256,8 +1352,8 @@
         <div class="edu-platform">📚 Coursera</div>
         <div class="edu-course">Java Object-Oriented Programming</div>
         <div class="edu-detail">
-          Comprehensive coverage of OOP principles, design patterns, and Java best practices.
-          Completed with hands-on project implementations using IntelliJ IDEA.
+          Comprehensive coverage of OOP principles, design patterns, and best practices.
+          Foundation for understanding clean object-oriented backend architecture.
         </div>
         <a href="https://coursera.org/share/a55f4f74042f9c90967594d5e8d103c7" target="_blank" style="text-decoration:none">
           <div class="cert-badge">✓ Verified Certificate · View →</div>
@@ -1273,6 +1369,73 @@
         <a href="https://coursera.org/share/db290fdd31571efef13366cb721f17eb" target="_blank" style="text-decoration:none">
           <div class="cert-badge">✓ Verified Certificate · View →</div>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="glitch-divider"></div>
+
+  <!-- ROADMAP -->
+  <section id="roadmap">
+    <div class="section-header reveal">
+      <span class="section-num">06</span>
+      <h2 class="section-title">Learning Roadmap</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="roadmap-grid">
+      <div class="roadmap-card reveal">
+        <span class="roadmap-icon">🐍</span>
+        <div class="roadmap-label">In Progress</div>
+        <div class="roadmap-title">Django & Python Mastery</div>
+        <div class="roadmap-desc">
+          Deep-diving into Django REST Framework, authentication, signals, and advanced ORM queries. Building production-ready APIs with proper testing and documentation.
+        </div>
+        <div class="roadmap-tags">
+          <span class="tag-orange">DRF</span>
+          <span class="tag-orange">Celery</span>
+          <span class="tag-orange">Redis</span>
+          <span class="tag-orange">Testing</span>
+        </div>
+      </div>
+      <div class="roadmap-card reveal" style="transition-delay:0.1s">
+        <span class="roadmap-icon">🐳</span>
+        <div class="roadmap-label">In Progress</div>
+        <div class="roadmap-title">Docker & Containerization</div>
+        <div class="roadmap-desc">
+          Mastering Docker for containerized deployments. Building multi-container apps with Docker Compose and understanding container networking and volumes.
+        </div>
+        <div class="roadmap-tags">
+          <span class="tag-orange">Dockerfile</span>
+          <span class="tag-orange">Compose</span>
+          <span class="tag-orange">Networking</span>
+          <span class="tag-orange">Volumes</span>
+        </div>
+      </div>
+      <div class="roadmap-card reveal" style="transition-delay:0.2s">
+        <span class="roadmap-icon">🧩</span>
+        <div class="roadmap-label">Planned</div>
+        <div class="roadmap-title">Microservices Architecture</div>
+        <div class="roadmap-desc">
+          Learning to design and decompose systems into independent, scalable services. Service communication, API gateways, and distributed system patterns.
+        </div>
+        <div class="roadmap-tags">
+          <span class="tag-orange">Service Mesh</span>
+          <span class="tag-orange">API Gateway</span>
+          <span class="tag-orange">Message Queue</span>
+        </div>
+      </div>
+      <div class="roadmap-card reveal" style="transition-delay:0.3s">
+        <span class="roadmap-icon">⚙️</span>
+        <div class="roadmap-label">Planned</div>
+        <div class="roadmap-title">DevOps & CI/CD</div>
+        <div class="roadmap-desc">
+          Automating deployments, building pipelines, and managing infrastructure. GitHub Actions, container orchestration, and cloud deployment fundamentals.
+        </div>
+        <div class="roadmap-tags">
+          <span class="tag-orange">GitHub Actions</span>
+          <span class="tag-orange">CI/CD</span>
+          <span class="tag-orange">Cloud</span>
+        </div>
       </div>
     </div>
   </section>
@@ -1314,7 +1477,7 @@ function animRing() {
 }
 animRing();
 
-document.querySelectorAll('a, button, .stack-item, .skill-block, .identity-card').forEach(el => {
+document.querySelectorAll('a, button, .stack-item, .skill-block, .identity-card, .roadmap-card').forEach(el => {
   el.addEventListener('mouseenter', () => {
     cur.style.transform = 'translate(-50%,-50%) scale(2)';
     ring.style.width = '60px';
